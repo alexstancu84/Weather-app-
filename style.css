@@ -1,0 +1,138 @@
+* {
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
+}
+
+html {
+   /* font-size: 10px; */
+   /* 10px / 16px = 0.625 = 62.5% */
+   /* Percentage of user's browser font-size setting */
+   font-size: 62.5%;
+}
+
+body {
+   position: relative;
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+   align-items: center;
+   height: 100vh;
+   font-family: sans-serif;
+   line-height: 1;
+   font-weight: 400;
+   color: #555;
+
+   background: radial-gradient(circle,
+         rgb(48, 202, 143) 0%,
+         rgb(68, 158, 13) 52%,
+         rgb(9, 148, 95) 100%);
+}
+
+h1 {
+   font-size: 6rem;
+
+   margin-top: 4.4rem;
+   /* -webkit-text-stroke: 2px black; */
+   text-shadow: -1.5px 0 black, 0 1.5px black, 1.5px 0 black, 0 -1.5px black;
+}
+
+
+/* FORM SECTION */
+
+.form {
+   margin-top: 4rem;
+   display: flex;
+   justify-content: center;
+}
+
+
+
+#city-input,
+.input-label,
+.form-btn {
+   font-size: 2.4rem;
+   font-weight: 600;
+   padding: 0.7rem 1.4rem;
+   border: none;
+   color: #555;
+   font-family: Arial, Helvetica, sans-serif;
+}
+
+.input-label {
+   font-size: 2.6rem;
+   text-shadow: -0.5px 0 black, 0 0.5px black, 0.5px 0 black, 0 -0.5px black;
+}
+
+#city-input:focus {
+   outline: none;
+   box-shadow: inset 0 0 0.5rem #555;
+}
+
+#city-input {
+   border-radius: 5px 0px 0px 5px;
+}
+
+.form-btn {
+   border-radius: 0px 5px 5px 0px;
+   color: whitesmoke;
+   background-color: #555;
+   cursor: pointer;
+}
+
+.form-btn:hover {
+   background-color: #444;
+   color: white;
+}
+
+
+
+/* CARD SECTION */
+
+.card-section {
+   margin-top: 4.4rem;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: flex-start;
+   gap: 4rem;
+   align-items: center;
+   width: 72rem;
+   color: whitesmoke;
+}
+
+.card {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+
+
+   height: 32rem;
+   width: 20rem;
+   background-color: #555;
+   border-radius: 0.5rem;
+   box-shadow: 0.3rem 0.3rem rgb(0, 0, 0, 0.1);
+}
+
+.card-name {
+   font-size: 2rem;
+   padding: 2.5rem 2rem 1.5rem;
+}
+
+.card-image {
+   width: 10rem;
+   height: 10rem;
+}
+
+.card-description {
+   font-size: 1.5rem;
+}
+
+.card-description,
+.card-temperature,
+.card-humidity,
+.card-pressure,
+.card-wind-speed,
+.card-wind-direction {
+   font-size: 1.4rem;
+   margin-bottom: 1rem;
+}

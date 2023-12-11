@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Weather app</title>
+      <link rel="stylesheet" href="style.css" />
+      <script src="script.js" defer></script>
+   </head>
+   <body>
+      <h1>Weather App</h1>
+      <form class="form" action="submit">
+         <label for="city-input" class="input-label">City name</label>
+         <input
+            id="city-input"
+            name="city-name"
+            type="text"
+            value="Sibiu"
+            placeholder="Write city name here"
+         />
+         <button class="form-btn" type="submit">Find</button>
+      </form>
+      <div class="card-section">
+         <div class="card"></div>
+         <div class="card">
+            <h3 class="card-name">Curtea de Arges</h3>
+            <img class="card-image" src="icons/11n.png" alt="Weather Icon" />
+            <p class="card-description">Clouds, scattered clouds</p>
+            <p class="card-temperature">Temperature: 12 &#8451;</p>
+            <p class="card-humidity">Humidity: 81</p>
+            <p class="card-pressure">Pressure: 1013 hPA</p>
+            <p class="card-wind-speed">Wind speed: 4 m/s</p>
+            <p class="card-wind-direction">Wind direction: 230&#176;</p>
+         </div>
+         <div class="card"></div>
+      </div>
+   </body>
+</html>
