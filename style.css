@@ -93,7 +93,7 @@ h1 {
    margin-top: 4.4rem;
    display: flex;
    flex-wrap: wrap;
-   justify-content: flex-start;
+   justify-content: center;
    gap: 4rem;
    align-items: center;
    width: 72rem;

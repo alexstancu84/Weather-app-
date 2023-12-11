@@ -6,25 +6,23 @@ const cardContainer = document.querySelector(".card-section");
 
 // FUNCTIONS
 
-function fetchData() {
+async function fetchData() {
    const city = document.querySelector("#city-input").value;
    const API_SRC = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`;
 
-   console.log(city);
-   // console.log(API_SRC);
-
-   return fetch(API_SRC)
-      .then((response) => response.json())
-      .then((responseJSON) => console.log(responseJSON));
+   const data = await fetch(API_SRC);
+   const output = await data.json();
+   
+   return output;
 }
 
 async function displayCard(e) {
    e.preventDefault();
 
-   const response = await fetchData();
-   const dataObj = await response.json();
-   const html = `<div class="card"></div>`;
+   const dataObj = await fetchData();
    console.log(dataObj);
+   
+   const html = `<div class="card"></div>`;
    cardContainer.insertAdjacentHTML("afterbegin", html);
 }
 
