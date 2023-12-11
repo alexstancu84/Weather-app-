@@ -23,7 +23,7 @@ async function displayCard(e) {
 
    const response = await fetchData();
    const dataObj = await response.json();
-   const html = "<div class="card"></div>";
+   const html = `<div class="card"></div>`;
    console.log(dataObj);
    cardContainer.insertAdjacentHTML("afterbegin", html);
 }
