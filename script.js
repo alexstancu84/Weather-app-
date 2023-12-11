@@ -18,11 +18,12 @@ function fetchData() {
       .then((responseJSON) => console.log(responseJSON));
 }
 
-function displayCard(e) {
+async function displayCard(e) {
    e.preventDefault();
 
-   const dataObj = fetchData().then((data) => data);
-   const html = "<p>meow</p>";
+   const response = await fetchData();
+   const dataObj = await response.json();
+   const html = "<div class="card"></div>";
    console.log(dataObj);
    cardContainer.insertAdjacentHTML("afterbegin", html);
 }
