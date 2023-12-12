@@ -6,6 +6,8 @@ const cardContainer = document.querySelector(".card-section");
 const btnStore = document.querySelector(".btn-store");
 const btnRemove = document.querySelector(".btn-remove");
 
+// 
+
 // FUNCTIONS
 
 async function fetchData() {
@@ -83,11 +85,45 @@ async function displayCard(e) {
 }
 
 function removeCard(e) {
-   if (e.target.closest(".btn-remove")) e.target.closest(".card").remove();
+   if (e.target.closest(".btn-remove")) {
+      ///////////////////////////////////////////////
+      const cityName = e.target
+         .closest(".card")
+         .querySelector(".card-name")
+         .textContent.split(",")[0];
+
+      const cityArrStored = JSON.parse(localStorage.getItem("cities"));
+      const cityToRemoveIndex = cityArrStored.indexOf(cityName);
+
+      cityArrStored.splice(cityToRemoveIndex, 1);
+
+      const citiesArrString = JSON.stringify(cityArrStored);
+      localStorage.setItem("cities", citiesArrString);
+
+      /////////////////////////////
+      e.target.closest(".card").remove();
+   }
 }
 
 function storeCard(e) {
-   if (e.target.closest(".btn-store")) console.log("hey");
+   if (e.target.closest(".btn-store")) {
+      const cityArrStored = JSON.parse(localStorage.getItem("cities"));
+
+      const cityArr = [];
+      const cityName = e.target
+         .closest(".card")
+         .querySelector(".card-name")
+         .textContent.split(",")[0];
+
+      cityArr.push(cityName);
+      const citiesUpdateArr = cityArrStored
+         ? [...cityArr, ...cityArrStored]
+         : cityArr;
+
+      const citiesArrString = JSON.stringify(citiesUpdateArr);
+
+      localStorage.setItem("cities", citiesArrString);
+   }
 }
 
 // EVENT LISTENERS
