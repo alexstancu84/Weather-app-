@@ -5,6 +5,7 @@ const formBtn = document.querySelector(".form-btn");
 const cardContainer = document.querySelector(".card-section");
 const btnStore = document.querySelector(".btn-store");
 const btnRemove = document.querySelector(".btn-remove");
+const clearBtn = document.querySelector(".clear-btn");
 
 // Local Storage display
 
@@ -14,6 +15,7 @@ displayStoredCards();
 
 async function displayStoredCards() {
    const citiesStored = JSON.parse(localStorage.getItem("cities"));
+   if (!citiesStored) return;
    citiesStored.forEach((city) => {
       fetchCity(city);
    });
@@ -86,6 +88,7 @@ async function fetchCity(city) {
 async function fetchData() {
    const city = document.querySelector("#city-input").value;
    const API_SRC = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`;
+   document.querySelector("#city-input").value = "";
 
    const data = await fetch(API_SRC);
    const output = await data.json();
@@ -158,21 +161,22 @@ async function displayCard(e) {
 
 function removeCard(e) {
    if (e.target.closest(".btn-remove")) {
-      ///////////////////////////////////////////////
       const cityName = e.target
          .closest(".card")
          .querySelector(".card-name")
          .textContent.split(",")[0];
 
       const cityArrStored = JSON.parse(localStorage.getItem("cities"));
-      const cityToRemoveIndex = cityArrStored.indexOf(cityName);
 
-      cityArrStored.splice(cityToRemoveIndex, 1);
+      if (cityArrStored) {
+         const cityToRemoveIndex = cityArrStored.indexOf(cityName);
 
-      const citiesArrString = JSON.stringify(cityArrStored);
-      localStorage.setItem("cities", citiesArrString);
+         cityArrStored.splice(cityToRemoveIndex, 1);
 
-      /////////////////////////////
+         const citiesArrString = JSON.stringify(cityArrStored);
+         localStorage.setItem("cities", citiesArrString);
+      }
+
       e.target.closest(".card").remove();
    }
 }
@@ -187,6 +191,8 @@ function storeCard(e) {
          .querySelector(".card-name")
          .textContent.split(",")[0];
 
+      if (cityArrStored && cityArrStored.includes(cityName)) return;
+
       cityArr.push(cityName);
       const citiesUpdateArr = cityArrStored
          ? [...cityArr, ...cityArrStored]
@@ -198,9 +204,13 @@ function storeCard(e) {
    }
 }
 
+function clearHistory() {
+   localStorage.clear();
+}
 // EVENT LISTENERS
 
 formBtn.addEventListener("click", displayCard);
+clearBtn.addEventListener("click", clearHistory);
 
 cardContainer.addEventListener("click", removeCard);
 cardContainer.addEventListener("click", storeCard);
