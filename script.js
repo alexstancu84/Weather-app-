@@ -206,6 +206,7 @@ function storeCard(e) {
 
 function clearHistory() {
    localStorage.clear();
+   cardContainer.innerHTML = "";
 }
 // EVENT LISTENERS
 
